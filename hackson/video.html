@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>video</title>
+    
+</head>
+<body>
+
+        <video id="video" width="640" height="480" autoplay></video>
+        <button id="start">start</button>
+        <h2>Canvas</h2>
+        <canvas id="canvas"></canvas>
+        <h2>Img</h2>
+        <img id="img" style="width:400px;height:300px">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <script>
+
+            $(function() {
+
+                // var video = document.getElementById("video");
+                // // getUserMedia によるカメラ映像の取得
+                // var media = navigator.mediaDevices.getUserMedia({
+                //     video: true,//ビデオを取得する
+                //     //使うカメラをインカメラか背面カメラかを指定する場合には
+                //     //video: { facingMode: "environment" },//背面カメラ
+                //     //video: { facingMode: "user" },//インカメラ
+                //     audio: false,//音声が必要な場合はture
+                // });
+                // //リアルタイムに再生（ストリーミング）させるためにビデオタグに流し込む
+                // media.then((stream) => {
+                //     video.srcObject = stream;
+                // });
+
+                //     var canvas = document.getElementById('canvas');
+                //     var ctx = canvas.getContext('2d');
+                //     var img = document.getElementById('img');
+
+                //     //videoの縦幅横幅を取得
+                //     var w = video.offsetWidth;
+                //     var h = video.offsetHeight;
+
+                //     //同じサイズをcanvasに指定
+                //     canvas.setAttribute("width", w);
+                //     canvas.setAttribute("height", h);
+
+                //     //canvasにコピー
+                //     ctx.drawImage(video, 0, 0, w, h);
+                //     //imgにpng形式で書き出し
+                //     img.src = canvas.toDataURL('image/png');
+
+                var video = document.getElementById('video');
+                var onFailSoHard = function(e) {
+                    console.log('エラー!', e);
+                };
+     
+                window.URL = window.URL || window.webkitURL;
+                navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+                navigator.getUserMedia({video: true}, function(stream) {
+                    video.srcObject = stream;
+                }, onFailSoHard);
+            
+
+                $("#start").click(function() {
+                    
+                        var canvas = document.getElementById('canvas');
+                        var ctx = canvas.getContext('2d');
+                        var img = document.getElementById('img');
+
+                        //videoの縦幅横幅を取得
+                        var w = video.offsetWidth;
+                        var h = video.offsetHeight;
+
+                        //同じサイズをcanvasに指定
+                        canvas.setAttribute("width", w);
+                        canvas.setAttribute("height", h);
+
+                        //canvasにコピー
+                        ctx.drawImage(video, 0, 0, w, h);
+                        //imgにjpeg形式で書き出し
+                        img.src = canvas.toDataURL('image/png');
+
+                        const src = canvas.toDataURL('image/png');
+                        console.log(src.slice(22))
+
+                        var endPoint = ' https://gkjpi8czp3.execute-api.us-east-2.amazonaws.com/dev'
+
+                        var url = endPoint + "/image"
+
+                        const reqPara = {
+                            "b64" : src.slice(22)
+                        }
+
+                        var request = new XMLHttpRequest();
+                        request.open('POST', url);
+                        request.responseType = 'application/json'; 
+                        request.onload = function () {
+                            console.log("success");
+                            console.log(request.response)
+                            console.log(JSON.parse(request.response).body)
+
+                            if (JSON.parse(request.response).body[0]) {
+                                if (JSON.parse(request.response).body[0]['gaze'][0] < 0) {
+                                    document.querySelectorAll('h2')[0].innerText = "右"
+                                    console.log("右")
+                                }
+                                else {
+                                    document.querySelectorAll('h2')[0].innerText = "左"
+                                    console.log("左")
+                                }
+                            }
+                        };
+                        request.onerror = function(error) {
+                            alert(JSON.stringify(error));
+                        }
+                        
+                        request.setRequestHeader('Content-Type', 'application/json');                           
+                        request.send(JSON.stringify(reqPara));
+
+                        // request.send(reqPara);
+                });
+
+
+                });
+
+        </script>
+</body>
+</html>
