@@ -1,0 +1,71 @@
+#video {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    right: 1000px;
+}
+
+
+.topMenu {
+    width: 100vw;
+    height: 50px;
+    background-color: skyblue;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+}
+
+.topMenu__title {
+    display: inline-block;
+    font-weight: bold;
+    width: 300px;
+    height: 100%;
+    line-height: 50px;
+    padding: 0px 20px;
+}
+
+.topMenu__register {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    line-height: 50px;
+    padding: 0px 20px;
+}
+
+.maincontents {
+    display: block;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.maincontents__which {
+    font-size: 30px;
+    color: red;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.maincontents__images {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.leftimage {
+    width: 40%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.rightimage {
+    width: 40%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
