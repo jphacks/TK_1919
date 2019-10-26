@@ -1,6 +1,5 @@
 import sys
-
-if __name__ == '__main__':
+def tsv_input():
   args = sys.argv
   city_file = args[1]
   user_preference = args[2]
@@ -11,9 +10,9 @@ if __name__ == '__main__':
       if cnt == 0:
         name_eval = list(map(str,line.split()))
         print(name_eval)
+        line = f.readline()
         pass # 先頭行
       cnt += 1
-      #print(line)
       #print(list(map(str,line.split())))
       city_info = list(map(str,line.split()))
       city_name = list(map(str,line.split()))[0]
@@ -22,3 +21,7 @@ if __name__ == '__main__':
       print(city_dict)
       #print(preference_list)
       line = f.readline()
+
+if __name__ == "__main__":
+  tsv_input()
+
