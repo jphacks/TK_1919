@@ -1,4 +1,22 @@
 import sys
+import math
+def sim_distance(prefs, person1, person2):
+    # person1とperson2が共に評価してるもののリスト
+    si = {}
+
+    for item in prefs[person1]:
+        if item in prefs[person2]:
+            si[item] = 1
+
+    # person1とperson2がどちらも評価してるものが無ければ類似性は0
+    if len(si) == 0 :
+        return 0
+
+    # 各項目ごとの差の平方
+    squares = [(prefs[person1][item] - prefs[person2][item]) ** 2 for item in si]
+    sum_of_sqrt = math.sqrt(sum(squares))
+    return 1/(1 + sum_of_sqrt)
+
 def tsv_input():
   args = sys.argv
   city_file = args[1]
@@ -24,4 +42,5 @@ def tsv_input():
 
 if __name__ == "__main__":
   tsv_input()
+
 
