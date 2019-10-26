@@ -17,6 +17,7 @@ def sim_distance(prefs, person1, person2):
     sum_of_sqrt = math.sqrt(sum(squares))
     return 1/(1 + sum_of_sqrt)
 
+
 def sim_pearson(prefs, person1, person2):
     si = {}
 
