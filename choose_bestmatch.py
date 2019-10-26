@@ -37,9 +37,9 @@ def tsv_input():
       #print(preference_list)
       line = f.readline()
     min_3 = sorted(zip(sum_sqrt_list,city,city_vals))[:3]
-    print(min_3)
+    return(min_3)
     
 if __name__ == "__main__":
-  tsv_input()
+  print(tsv_input())
 
 
