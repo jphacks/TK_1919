@@ -17,8 +17,11 @@ def choose_min3_city():
    for i in range(len(city_val)):
     similarity.append([sim_distance(user,city_val[i][1]),city_val[i][0],city_val[i][1]])
    #print(similarity)
-   min_3 = sorted(similarity)[-3:]
-   return(min_3)
+   sort_sim = sorted(similarity)
+   best_3 = sort_sim[-3:]
+   worst = sort_sim[0]
+   best_3.extend(worst)
+   return(best_3)
       
 if __name__ == "__main__":
   print(choose_min3_city())
