@@ -12,16 +12,14 @@
             <div class="topMenu__title">旅行レコメンドサービス</div>
             <div class="topMenu__register">会員登録</div>
             <div class="topMenu__register">履歴を見る</div>
-            <div class="topMenu__register">おすすめ旅行会社</div>
+            <div class="topMenu__register">旅行会社一覧</div>
         </div>
         <div class="maincontents">
             <h2 class="maincontents__which">Which do you like?</h2>
             <div class="maincontents__images">
-                    <img class="leftimage" src="kappa.jpeg">
-                    <img class="rightimage" src="kappa.jpeg">
-            </div>   
-            <button id="start">start</button>
-            <h2 class="result">ここに結果が表示される</h2>
+                    <img class="leftimage" src="hackpicture/1a.jpg">
+                    <img class="rightimage" src="hackpicture/1b.jpg">
+            </div>          
             <canvas id="canvas" style="display:none"></canvas>
             <video id="video" autoplay></video>
         </div>
@@ -41,21 +39,28 @@
                     video.srcObject = stream;
                 }, onFailSoHard);
 
-                //左だったら+1をして右だったら-1をするという風にしよう
-                var resultRawArray = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+                //左だったら+1をして 右だったら0にしよう　3 2 1 0の４段階である
+                var resultRawArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 var resultArray = [0,0,0,0,0]
+                var magicNumber = 29
+                var requestCount = 0
+
+                var calculate = function() {
+                    for (var i = 0;i < 5; i++) {
+                    resultArray[i] = resultRawArray[i*3] + resultRawArray[i*3 + 1] + resultRawArray[i*3 + 2]
+                    }
+                    console.log(resultRawArray)
+                    console.log(resultArray)
+                }
             
                 var count = 0;
                 var sendPicture = function() {
                         if(count % 10 == 0) {
-                            if (count % 20 == 0) {
-                                document.querySelectorAll('.leftimage')[0].src = "kappa.jpeg"
-                                document.querySelectorAll('.rightimage')[0].src = "kappa.jpeg"
-                            }
-                            else {
-                                document.querySelectorAll('.leftimage')[0].src = "kappa2.jpeg"
-                                document.querySelectorAll('.rightimage')[0].src = "kappa2.jpeg"
-                            }
+                                const leftsrc = "hackpicture/" + (count / 10 + 1) + "a.jpg"
+                                const rightsrc = "hackpicture/" + (count / 10 + 1) + "b.jpg"
+                                document.querySelectorAll('.leftimage')[0].src = leftsrc
+                                document.querySelectorAll('.rightimage')[0].src = rightsrc
+                            
                         }
 
                         var canvas = document.getElementById('canvas');
@@ -76,8 +81,8 @@
 
                         const reqPara = {
                             "b64" : src.slice(22),
-                            "pictureNumber": count / 10 + 1,
-                            "tryNumber": count % 10
+                            "pictureNumber": Math.floor(count / 10 + 1),
+                            "tryNumber": count % 10  //7か８か９がはいる
                         }
 
                         var request = new XMLHttpRequest();
@@ -85,40 +90,48 @@
                         request.responseType = 'application/json'; 
                         request.onload = function () {
                             console.log("success");
-                            console.log(JSON.parse(request.response).body)
-
-                            if (JSON.parse(request.response).body[0]) {
-                                if (JSON.parse(request.response).body[0]['gaze'][0] < 0) {
-                                    document.querySelectorAll('.result')[0].innerText = "あなたは右を向いている"
+                            requestCount++
+                            
+                            if (JSON.parse(request.response).body[0][0]) {
+                                if (JSON.parse(request.response).body[0][0]['gaze'][0] < 0) {
                                     console.log("右")
                                 }
                                 else {
-                                    document.querySelectorAll('.result')[0].innerText = "あなたは左を向いている"
+                                    const pictureNumber = JSON.parse(request.response).body[1]
+                                    console.log(pictureNumber)//1か2か３が入る
+                                    resultRawArray[pictureNumber - 1] = 1
                                     console.log("左")
                                 }
                             }
                             else {
                                 document.querySelectorAll('.result')[0].innerText = "読み取れませんでした"
                                 console.log("再送")
-
                             }
+
+                            if (requestCount == (magicNumber + 1) * 3 / 10) {
+                                //最後の判定
+                                console.log("最後だよ")
+                                 // 計算してあとはPythonに任せよう
+                                calculate()
+                            }
+
                         };
                         request.onerror = function(error) {
                             alert(JSON.stringify(error));
+                            requestCount++
                         }
                         
                         request.setRequestHeader('Content-Type', 'application/json'); 
                         //0.7 0.8 0.9 1.7 1.8 1.9 2.7 2.8 2.9秒に実行するための処理
                         if (count % 10 < 7) {
-                            console.log("定期処理が却下された");
                         }
                         else {
-                            // request.send(JSON.stringify(reqPara));
-                            console.log("定期処理が実行された");
+                            request.send(JSON.stringify(reqPara));               
                         }
                         var timeout = setTimeout(sendPicture, 100);
                         count++
-                        if(count > 5000) {　
+                        if(count > magicNumber) {　
+                            //149にするとちょうどいい
                             clearTimeout(timeout);　//idをclearTimeoutで指定している
                         }
 
@@ -126,7 +139,7 @@
 
                 sendPicture();
 
-
+            
                 });
 
         </script>
