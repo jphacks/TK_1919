@@ -23,129 +23,36 @@
   </ul>
 </nav>
 <section>
+<script>
+document.write('<input id="searchText" type="text">');
+document.write('<input id="searchButton" type="button" value="Search" onclick="googleImageSearchAPI()"><br/>')
+document.write('<img id="image">');
+
+function googleImageSearchAPI(){
+	var text = document.getElementById("searchText").value;
+	var script = document.createElement('script');
+	script.src = "http://ajax.googleapis.com/ajax/services/search/images?callback=cb&q="+text+"&v=1.0";
+	document.head.appendChild(script);
+}
+function cb(d){
+	var image=d.responseData.results[0].url;
+	document.getElementById("image").src=image;
+}
+</script>
 <article>
   <span class="date">ここに日付</span>
   <h2>See Description</h2>
   <p>
-   <canvas id="myChart"></canvas>
-   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-   var ctx = document.getElementById('myChart').getContext('2d');
-   var chart = new Chart(ctx, {var ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go herevar ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go herevar ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go herevar ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go herevar ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go here
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go herevar ctx = document.getElementById('myChart').getContext('2d');
-var     chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
-
-        // Configuration options go here
-       それぞれの旅行先説明とレーダーチャート
   </p>
   <a href="#" class="btn">&gt;もっと見る</a>
 </article>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">拡散</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="twitter">
+　<a href="//twitter.com/share" class="twitter-share-button" data-text="ぜひ拡散してね！！！あなたの行きたい都市は？？" data-url="<!-- ここにTweetしたときに入れたいURLを入れる -->" data-lang="ja<!-- 日本語の場合 -->">
+みんなに広めよう！！！
+</a>
+</div>
 </section>
 <footer>
 <address>Copyright(C) Wonder Trip ,All Rights Reserved.</address>
