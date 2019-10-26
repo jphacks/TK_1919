@@ -26,8 +26,17 @@
                 data: { // チャートの内容
                     labels: ["distance", "urban", "hot", "culture", "oriental"],
                     datasets: [{
-                        data: [12, 19, 3, 5, 2],
-                }]
+                        label: "東京",
+                        borderColor: "rgba(200,0,0.2)",
+                        backgroundColor: "rgba(255,0,0,0.2)",
+                        data: [12, 19, 3, 5, 2]
+                    },
+                    {
+                      label: "アムステルダム",
+                      borderColor: "rgba(0,200,0.2)",
+                      backgroundColor: "rgba(0,255,0,0.2)",
+                      data: [20,15,5,15,0]
+                    }]
               }
             });
         </script>
