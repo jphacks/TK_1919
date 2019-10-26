@@ -8,8 +8,8 @@ def yahooScrapingCity(cityname) :
     #url = 'https://www.google.co.jp/search'
     #url = 'https://ja.wikipedia.org/wiki/'
     #url = 'http://www.yahoo.co.jp'
-    #url = "https://search.yahoo.co.jp/search?p={}&n=60".format(quote(cityname))
-    url = "https://www.arukikata.co.jp/city/AMS/"
+    url = "https://search.yahoo.co.jp/search?p={}&n=60".format(quote(cityname))
+    #url = "https://www.arukikata.co.jp/city/AMS/"
 
     resp = requests.get(url, params={'q': cityname})
     #print(resp.text)
