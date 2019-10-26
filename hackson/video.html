@@ -42,6 +42,7 @@
                 //左だったら+1をして 右だったら0にしよう　3 2 1 0の４段階である
                 var resultRawArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 var resultArray = [0,0,0,0,0]
+                var resultArray20 = [0,0,0,0,0]
                 var magicNumber = 149
                 var requestCount = 0
 
@@ -49,9 +50,34 @@
                     for (var i = 0;i < 5; i++) {
                     resultArray[i] = resultRawArray[i*3] + resultRawArray[i*3 + 1] + resultRawArray[i*3 + 2]
                     }
-                    console.log(resultRawArray)
-                    console.log(resultArray)
-                    //POSTメソッドを送る
+                    for (var i = 0;i < 5; i++) {
+                        //2,3,4,5の５段階にする
+                        resultArray20[i] = resultArray[i] + 2
+                    }
+
+                    var calculateURL = ' https://gkjpi8czp3.execute-api.us-east-2.amazonaws.com/dev/carculate'
+                    const carculatePara = {
+                        "array" : resultArray20
+                    }
+
+                    var request = new XMLHttpRequest();
+                    request.open('POST', calculateURL);
+                    request.responseType = 'application/json'; 
+                    request.onload = function () {
+                        //ローカルストレージ にrequest.responseを入れて次の画面へ
+                        const bodyArray = JSON.parse(request.response)["body"]
+                        localStorage.removeItem('resultArray')
+                        localStorage.setItem('resultArray', JSON.stringify(bodyArray));
+                        localStorage.setItem('favoriteArray', JSON.stringify(resultArray20))
+                        console.log(bodyArray)
+                        window.location.href = 'result.html';
+                    }
+                    request.onerror = function(error) {
+                        alert(JSON.stringify(error));
+                    }
+                    request.setRequestHeader('Content-Type', 'application/json'); 
+                    request.send(JSON.stringify(carculatePara));
+
                 }
             
                 var count = 0;

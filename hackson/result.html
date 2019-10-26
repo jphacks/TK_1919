@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="video.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <title>結果発表</title>
+</head>
+<body>
+        <div class="topMenu">
+                <div class="topMenu__title">旅行レコメンドサービス</div>
+                <div class="topMenu__register">会員登録</div>
+                <div class="topMenu__register">履歴を見る</div>
+                <div class="topMenu__register">旅行会社一覧</div>
+        </div>
+        <div class="maincontents">
+            <h2 class="maincontents__which">あなたにオススメの３つの都市です</h2>
+                <h3 class="city"></h3>
+                <p class="detail">オランドの首都で、とても観光に適しています</p>
+                <canvas class="Chart1" style="position: relative; height:30vh; width:70vw"></canvas>
+                <h3 class="city"></h3>
+                <p class="detail">オランドの首都で、とても観光に適しています</p>
+                <!-- <img class="citypicture" src="hackpicture/1a.jpg"" alt="アムステルダム"> -->
+                <canvas class="Chart2" style="position: relative; height:30vh; width:70vw"></canvas>
+                <h3 class="city"></h3>
+                <p class="detail">オランドの首都で、とても観光に適しています</p>
+                <canvas class="Chart3" style="position: relative; height:30vh; width:70vw"></canvas>  
+            <h2 class="maincontents__which">あなたが絶対に行ってはいけない都市は...</h2>
+                <h3 class="city"></h3>
+                <p class="detail">オランドの首都です　絶対に行ってはいけません</p>
+                <canvas class="Chart4" style="position: relative; height:30vh; width:70vw"></canvas>  
+            
+        </div>
+        <script>
+
+            const resultArray = JSON.parse(localStorage.getItem('resultArray'));
+            const favoriteArray = JSON.parse(localStorage.getItem('favoriteArray'));
+
+            document.querySelectorAll("h3")[0].innerText = resultArray[0][1];
+            document.querySelectorAll("h3")[1].innerText = resultArray[1][1];
+            document.querySelectorAll("h3")[2].innerText = resultArray[2][1];document.querySelectorAll("h3")[3].innerText = resultArray[3][1];
+
+            var ctx1 = document.getElementsByClassName("Chart1");
+            var myChart1 = new Chart(ctx1, {
+                type: 'radar', // チャートのタイプ
+                data: {  // チャートの内容
+                    labels: ["distance", "urban", "hot", "culture", "oriental"],
+                    datasets: [{
+                        label: "あなたの好み",
+                        borderColor: "rgba(200,0,0.2)",
+                        backgroundColor: "rgba(255,0,0,0.2)",
+                        data: favoriteArray
+                    },
+                    {
+                      label: resultArray[0][1],
+                      borderColor: "rgba(0,200,0.2)",
+                      backgroundColor: "rgba(0,255,0,0.2)",
+                      data: resultArray[0][2]
+                    }]
+                },
+              options: {
+                    scale: {
+                        ticks: {
+                            display: true,
+                            min: 0,
+                            max: 5
+                        }
+                    }
+              }
+            });
+
+            var ctx2 = document.getElementsByClassName("Chart2");
+            var myChart2 = new Chart(ctx2, {
+                type: 'radar', // チャートのタイプ
+                data: { // チャートの内容
+                    labels: ["distance", "urban", "hot", "culture", "oriental"],
+                    datasets: [{
+                        label: "あなたの好み",
+                        borderColor: "rgba(200,0,0.2)",
+                        backgroundColor: "rgba(255,0,0,0.2)",
+                        data: favoriteArray
+                    },
+                    {
+                      label: resultArray[1][1],
+                      borderColor: "rgba(0,200,0.2)",
+                      backgroundColor: "rgba(0,255,0,0.2)",
+                      data: resultArray[1][2]
+                    }]
+              },
+              options: {
+                    scale: {
+                        ticks: {
+                            display: true,
+                            min: 0,
+                            max: 5
+                        }
+                    }
+              }
+            });
+
+            var ctx3 = document.getElementsByClassName("Chart3");
+            var myChart3 = new Chart(ctx3, {
+                type: 'radar', // チャートのタイプ
+                data: { // チャートの内容
+                    labels: ["distance", "urban", "hot", "culture", "oriental"],
+                    datasets: [{
+                        label: "あなたの好み",
+                        borderColor: "rgba(200,0,0.2)",
+                        backgroundColor: "rgba(255,0,0,0.2)",
+                        data: favoriteArray
+                    },
+                    {
+                      label: resultArray[2][1],
+                      borderColor: "rgba(0,200,0.2)",
+                      backgroundColor: "rgba(0,255,0,0.2)",
+                      data: resultArray[2][2]
+                    }]
+              },
+              options: {
+                    scale: {
+                        ticks: {
+                            display: true,
+                            min: 0,
+                            max: 5
+                        }
+                    }
+              }
+            });
+
+            var ctx4 = document.getElementsByClassName("Chart4");
+            var myChart4 = new Chart(ctx4, {
+                type: 'radar', // チャートのタイプ
+                data: { // チャートの内容
+                    labels: ["distance", "urban", "hot", "culture", "oriental"],
+                    datasets: [{
+                        label: "あなたの好み",
+                        borderColor: "rgba(200,0,0.2)",
+                        backgroundColor: "rgba(255,0,0,0.2)",
+                        data: favoriteArray
+                    },
+                    {
+                      label: resultArray[3][1],
+                      borderColor: "rgba(0,200,0.2)",
+                      backgroundColor: "rgba(0,255,0,0.2)",
+                      data: resultArray[3][2]
+                    }]
+              },
+              options: {
+                    scale: {
+                        ticks: {
+                            display: true,
+                            min: 0,
+                            max: 5
+                        }
+                    }
+              }
+            });
+            
+        </script>
+    
+</body>
+</html>
