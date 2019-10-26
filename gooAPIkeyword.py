@@ -1,6 +1,7 @@
 
 import json
-from botocore.vendored import requests
+from botocore.vendored import requests #AWS用
+import requests #AWS以外用
 
 method = "POST"
 headers = {"Content-Type" : "application/json"}
