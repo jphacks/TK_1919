@@ -42,7 +42,7 @@
                 //左だったら+1をして 右だったら0にしよう　3 2 1 0の４段階である
                 var resultRawArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 var resultArray = [0,0,0,0,0]
-                var magicNumber = 29
+                var magicNumber = 149
                 var requestCount = 0
 
                 var calculate = function() {
@@ -51,6 +51,7 @@
                     }
                     console.log(resultRawArray)
                     console.log(resultArray)
+                    //POSTメソッドを送る
                 }
             
                 var count = 0;
@@ -59,8 +60,7 @@
                                 const leftsrc = "hackpicture/" + (count / 10 + 1) + "a.jpg"
                                 const rightsrc = "hackpicture/" + (count / 10 + 1) + "b.jpg"
                                 document.querySelectorAll('.leftimage')[0].src = leftsrc
-                                document.querySelectorAll('.rightimage')[0].src = rightsrc
-                            
+                                document.querySelectorAll('.rightimage')[0].src = rightsrc 
                         }
 
                         var canvas = document.getElementById('canvas');
@@ -72,7 +72,6 @@
 
                         canvas.setAttribute("width", w);
                         canvas.setAttribute("height", h);
-
                         ctx.drawImage(video, 0, 0, w, h);                 
 
                         const src = canvas.toDataURL('image/png');
@@ -80,17 +79,17 @@
                         var url = ' https://gkjpi8czp3.execute-api.us-east-2.amazonaws.com/dev/image'
 
                         const reqPara = {
-                            "b64" : src.slice(22),
+                            "b64" : src.slice(22),//data:image/pngみたいなやつを除く
                             "pictureNumber": Math.floor(count / 10 + 1),
-                            "tryNumber": count % 10  //7か８か９がはいる
+                            "tryNumber": count % 10  //７か８か９がはいる
                         }
 
                         var request = new XMLHttpRequest();
                         request.open('POST', url);
                         request.responseType = 'application/json'; 
                         request.onload = function () {
-                            console.log("success");
                             requestCount++
+                            console.log("success");               
                             
                             if (JSON.parse(request.response).body[0][0]) {
                                 if (JSON.parse(request.response).body[0][0]['gaze'][0] < 0) {
@@ -104,12 +103,11 @@
                                 }
                             }
                             else {
-                                document.querySelectorAll('.result')[0].innerText = "読み取れませんでした"
                                 console.log("再送")
                             }
 
                             if (requestCount == (magicNumber + 1) * 3 / 10) {
-                                //最後の判定
+                                //最後の判定 レスポンスが全て返ってきたかを確認する
                                 console.log("最後だよ")
                                  // 計算してあとはPythonに任せよう
                                 calculate()
@@ -123,9 +121,7 @@
                         
                         request.setRequestHeader('Content-Type', 'application/json'); 
                         //0.7 0.8 0.9 1.7 1.8 1.9 2.7 2.8 2.9秒に実行するための処理
-                        if (count % 10 < 7) {
-                        }
-                        else {
+                        if (count % 10 >= 7) {
                             request.send(JSON.stringify(reqPara));               
                         }
                         var timeout = setTimeout(sendPicture, 100);
@@ -137,9 +133,10 @@
 
                 };
 
-                sendPicture();
+                setTimeout(function() {
+                    sendPicture();
+                }, 3000);
 
-            
                 });
 
         </script>
