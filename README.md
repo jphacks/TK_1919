@@ -1,8 +1,7 @@
 # Unagi-Recommendation うなレコ
-https://trickjp.com/video.html
 ![うなぎレコメンデーション](https://github.com/jphacks/TK_1919/blob/master/readme_images/logo.png "Unagi-recomendation")
 # Demo
-
+![うなぎレコメンデーション](https://trickjp.com/video.html)
 [![デモムービー](image.png)](https://youtu.be/c4XjRWWVmU8)
 
 ## 目次
