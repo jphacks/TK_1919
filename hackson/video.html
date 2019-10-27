@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="video.css">
-    <title>旅行レコメンドサービス</title>   
+    <title>ウナギレコメンデーション</title>   
 </head>
 <body>
         <div class="topMenu">
-            <div class="topMenu__title">旅行レコメンドサービス</div>
+            <div class="topMenu__title">ウナギレコメンデーション</div>
             <div class="topMenu__register">会員登録</div>
             <div class="topMenu__register">履歴を見る</div>
             <div class="topMenu__register">旅行会社一覧</div>
+            <div class="topMenu__register">海外旅行</div>
+            <div class="topMenu__register">国内旅行</div>
         </div>
         <div class="maincontents">
             <h2 class="maincontents__which">Which do you like?</h2>
@@ -23,21 +25,26 @@
             <canvas id="canvas" style="display:none"></canvas>
             <video id="video" autoplay></video>
         </div>
+        <footer>
+                <div class="footer__content">お問い合わせ</div>
+                <div class="footer__content">利用規約</div>
+                <div class="footer__content">初めての方へ</div>
+        </footer>
+        
+        <!-- <div class="bg"></div>
+        <div class="start">
+            <h3 class="start__second">3</h3>
+        </div> -->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>
 
+            var human = 0
             $(function() {
                 var video = document.getElementById('video');
                 var onFailSoHard = function(e) {
                     console.log('エラー!');
                 };
-     
-                window.URL = window.URL || window.webkitURL;
-                navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-                navigator.getUserMedia({video: true}, function(stream) {
-                    video.srcObject = stream;
-                }, onFailSoHard);
 
                 //左だったら+1をして 右だったら0にしよう　3 2 1 0の４段階である
                 var resultRawArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -45,6 +52,10 @@
                 var resultArray20 = [0,0,0,0,0]
                 var magicNumber = 149
                 var requestCount = 0
+
+                var startTimer = function() {
+
+                }
 
                 var calculate = function() {
                     for (var i = 0;i < 5; i++) {
@@ -69,7 +80,7 @@
                         localStorage.removeItem('resultArray')
                         localStorage.setItem('resultArray', JSON.stringify(bodyArray));
                         localStorage.setItem('favoriteArray', JSON.stringify(resultArray20))
-                        console.log(bodyArray)
+                        human++
                         window.location.href = 'result.html';
                     }
                     request.onerror = function(error) {
@@ -135,7 +146,6 @@
                             if (requestCount == (magicNumber + 1) * 3 / 10) {
                                 //最後の判定 レスポンスが全て返ってきたかを確認する
                                 console.log("最後だよ")
-                                 // 計算してあとはPythonに任せよう
                                 calculate()
                             }
 
@@ -150,7 +160,7 @@
                         if (count % 10 >= 7) {
                             request.send(JSON.stringify(reqPara));               
                         }
-                        var timeout = setTimeout(sendPicture, 100);
+                        var timeout = setTimeout(sendPicture, 200);
                         count++
                         if(count > magicNumber) {　
                             //149にするとちょうどいい
@@ -158,7 +168,7 @@
                         }
 
                 };
-
+                
                 setTimeout(function() {
                     sendPicture();
                 }, 3000);
