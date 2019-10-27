@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="video.css">
+    <script type="text/javascript" src="sentence.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <title>結果発表</title>
+</head>
+<body style="font-size: 0px">
+        <div class="topMenu">
+                <div class="topMenu__title">ウナギレコメンデーション</div>
+                <div class="topMenu__register">会員登録</div>
+                <div class="topMenu__register">履歴を見る</div>
+                <div class="topMenu__register">旅行会社一覧</div>
+                <div class="topMenu__register">海外旅行</div>
+                <div class="topMenu__register">国内旅行</div>
+        </div>
+        <h2 class="maincontents__which">あなたにオススメの３つのマイナー都市を紹介します</h2>
+        <p class="recommendText"></p>
+        <div class="maincontentsResult">
+                <div class="container1" style="width:100%;height: 700px">
+                    <h3 class="city"></h3>
+                    <p class="detail"></p>
+                    <canvas class="Chart1" style="position: relative; height:30vh; width:40vw"></canvas>
+                    <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだ検索キーワード</p>
+                    <ul><li class="goo11"></li><li class="goo12"></li><li class="goo13"></li><li class="goo14"></li><li class="goo15"></li></ul>
+                </div>
+                <div class="container2" style="width:100%;height: 700px">
+                    <h3 class="city"></h3>
+                    <p class="detail"></p>
+                    <canvas class="Chart2" style="position: relative; height:30vh; width:30vw"></canvas>
+                    <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだ検索キーワード</p>
+                    <ul><li class="goo21"></li><li class="goo22"></li><li class="goo23"></li><li class="goo24"></li><li class="goo25"></li></ul>
+                </div>
+                <div class="container3" style="width:100%;height: 700px">
+                    <h3 class="city"></h3>
+                    <p class="detail"></p>
+                    <canvas class="Chart3" style="position: relative; height:30vh; width:30vw"></canvas> 
+                    <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだ検索キーワード</p>
+                    <ul><li class="goo31"></li><li class="goo32"></li><li class="goo33"></li><li class="goo34"></li><li class="goo35"></li></ul>
+                </div>
+            <h2 class="maincontents__which">絶対に行ってはいけないマイナー都市は...</h2>
+                <div class="container4" style="width:100%;height: 700px">
+                <h3 class="city"></h3>
+                <p class="detail"></p>
+                <canvas class="Chart4" style="position: relative; height:30vh; width:30vw"></canvas> 
+                <button class="moreButton" onclick="location.href='video.html'">それでも行ってみたい</button>
+                <p class="goo">gooが選んだ検索キーワード</p>
+                    <ul><li class="goo41"></li><li class="goo42"></li><li class="goo43"></li><li class="goo44"></li><li class="goo45"></li></ul>
+                </div>
+            
+        </div>
+        <div class="maincontentsResult2">
+            <div class="container5" style="width:100%;height: 700px">
+            <img class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            </div>
+            <div class="container6" style="width:100%;height: 700px">
+            <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            </div>
+            <div class="container7" style="width:100%;height: 700px">
+            <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg">
+            </div>
+            <div class="container8" style="width:100%;height: 700px">
+                <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg" style="position:relative;top:200px">
+                <img  class="maincontentsResult2__img"height="300" width="auto" src="hackpicture/10a.jpg" style="position:relative;top:200px">
+            </div>
+        </div>
+        <footer>
+            <div class="twitter">
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-text="" data-size="large">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+            <div class="footer__content">お問い合わせ</div>
+            <div class="footer__content">利用規約</div>
+            <div class="footer__content">初めての方へ</div>
+            <a href="http://www.goo.ne.jp/"">
+                <img src="http://u.xgoo.jp/img/sgoo.png" alt="supported by goo"
+                title="supported by goo" width="100px">
+            </a>
+        </footer>
+
+        <script>
+            const resultArray = JSON.parse(localStorage.getItem('resultArray'));
+            const favoriteArray = JSON.parse(localStorage.getItem('favoriteArray'));
+            //なぜかちょくちょく画面が大きくなるバグがある
+            document.querySelectorAll("h3")[0].innerText = "1位　" + resultArray[4][1];
+            document.querySelectorAll("h3")[1].innerText = "2位　" + resultArray[5][1];
+            document.querySelectorAll("h3")[2].innerText = "3位　" + resultArray[6][1];document.querySelectorAll("h3")[3].innerText = "最下位　" + resultArray[7][1];
+            document.querySelectorAll(".recommendText")[0].innerText = makeComment(favoriteArray)
+
+            document.querySelectorAll(".detail")[0].innerText = returnSentence(resultArray[4][1])
+            document.querySelectorAll(".detail")[1].innerText = returnSentence(resultArray[5][1])
+            document.querySelectorAll(".detail")[2].innerText = returnSentence(resultArray[6][1])
+            document.querySelectorAll(".detail")[3].innerText = returnSentence(resultArray[7][1]) + "絶対にあなたは行っては行けません。"
+
+            document.querySelectorAll(".container5 > img")[0].src = "Original/" + resultArray[4][1] + "/0.jpg"
+            document.querySelectorAll(".container5 > img")[1].src = "Original/" + resultArray[4][1] + "/1.jpg"
+            document.querySelectorAll(".container6 > img")[0].src = "Original/" + resultArray[5][1] + "/0.jpg"
+            document.querySelectorAll(".container6 > img")[1].src = "Original/" + resultArray[5][1] + "/1.jpg"
+            document.querySelectorAll(".container7 > img")[0].src = "Original/" + resultArray[6][1] + "/0.jpg"
+            document.querySelectorAll(".container7 > img")[1].src = "Original/" + resultArray[6][1] + "/1.jpg"
+            document.querySelectorAll(".container8 > img")[0].src = "Original/" + resultArray[7][1] + "/0.jpg"
+            document.querySelectorAll(".container8 > img")[1].src = "Original/" + resultArray[7][1] + "/1.jpg"
+
+            const twitterText = "私に最もおすすめなマイナー観光地は" + resultArray[4][1] + "、絶対に行ってはいけないマイナー観光地は" + resultArray[7][1] + "でした。30秒で簡単診断。あなたもやってみよう。"
+            document.querySelectorAll(".twitter-share-button")[0].setAttribute("data-text",　twitterText)
+
+            for (var i = 5;i < 9; i++) {
+                for (var j = 1;j < 6; j++) {
+                    const keywordjson = returnKeyword(resultArray[i-1][1])
+                    const className = 'goo' + (i-4) + j
+                    console.log(className)
+                    console.log(keywordjson["keywords"])
+                    document.getElementsByClassName(className)[0].innerText = Object.keys(keywordjson["keywords"][j-1])
+                    console.log(Object.keys(keywordjson["keywords"][j-1]))
+                }
+            } 
+
+            const chartArray = ["Chart1","Chart2","Chart3","Chart4"]
+            for (var j = 4;j < 8; j++) {
+                var ctx1 = document.getElementsByClassName(chartArray[j-4]);
+                var myChart1 = new Chart(ctx1, {
+                    type: 'radar', // チャートのタイプ
+                    data: {  // チャートの内容
+                        labels: ["distance", "urban", "hot", "culture", "oriental"],
+                        datasets: [{
+                            label: "あなたの好み",
+                            borderColor: "rgba(200,0,0.2)",
+                            backgroundColor: "rgba(255,0,0,0.2)",
+                            data: favoriteArray
+                        },
+                        {
+                        label: resultArray[j][1],
+                        borderColor: "rgba(0,200,0.2)",
+                        backgroundColor: "rgba(0,255,0,0.2)",
+                        data: resultArray[j][2]
+                        }]
+                    },
+                options: {
+                        scale: {
+                            pointLabels: {      
+                                fontSize: 16,  
+                            },
+                            ticks: {
+                                display: true,
+                                min: 0,
+                                max: 5
+                            }
+                        }
+                }
+                });
+            }
+            
+        </script>
+    
+</body>
+</html>
