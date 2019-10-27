@@ -3,6 +3,7 @@
 # Demo動画&リンク
 [うなぎレコメンデーション](https://trickjp.com/start.html)
 左のリンクより実際に体験できます。
+[![リンク](link_image.png)](https://trickjp.com/start.html)
 [![デモムービー](youtube_image.png)](https://youtu.be/c4XjRWWVmU8)
 
 ## 目次
