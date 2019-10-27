@@ -19,24 +19,31 @@
                 <div class="topMenu__register">国内旅行</div>
         </div>
         <h2 class="maincontents__which">あなたにオススメの３つの都市を紹介します</h2>
+        <p class="recommendText"></p>
         <div class="maincontentsResult">
                 <div class="container1" style="width:100%;height: 700px">
                     <h3 class="city"></h3>
                     <p class="detail">オランドの首都で、とても観光に適しています</p>
                     <canvas class="Chart1" style="position: relative; height:30vh; width:40vw"></canvas>
                     <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだ検索キーワード</p>
+                    <ul><li class="goo11"></li><li class="goo12"></li><li class="goo13"></li><li class="goo14"></li><li class="goo15"></li></ul>
                 </div>
                 <div class="container2" style="width:100%;height: 700px">
                     <h3 class="city"></h3>
                     <p class="detail"></p>
                     <canvas class="Chart2" style="position: relative; height:30vh; width:30vw"></canvas>
                     <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだキーワード</p>
+                    <ul><li class="goo21"></li><li class="goo22"></li><li class="goo23"></li><li class="goo24"></li><li class="goo25"></li></ul>
                 </div>
                 <div class="container3" style="width:100%;height: 700px">
                     <h3 class="city"></h3>
                     <p class="detail"></p>
                     <canvas class="Chart3" style="position: relative; height:30vh; width:30vw"></canvas> 
-                    <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button> 
+                    <button class="moreButton" onclick="location.href='video.html'">観光情報を調べる</button>
+                    <p class="goo">gooが選んだキーワード</p>
+                    <ul><li class="goo31"></li><li class="goo32"></li><li class="goo33"></li><li class="goo34"></li><li class="goo35"></li></ul>                    
                 </div>
                 <h2 class="maincontents__which">あなたが絶対に行ってはいけない都市は...</h2>
                 <div class="container4" style="width:100%;height: 700px">
@@ -44,6 +51,8 @@
                 <p class="detail"></p>
                 <canvas class="Chart4" style="position: relative; height:30vh; width:30vw"></canvas> 
                 <button class="moreButton" onclick="location.href='video.html'">それでも行ってみたい</button>
+                <p class="goo">gooが選んだキーワード</p>
+                <ul><li class="goo41"></li><li class="goo42"></li><li class="goo43"></li><li class="goo44"></li><li class="goo45"></li></ul>
                 </div>
         </div>
         <div class="maincontentsResult2">
@@ -73,12 +82,16 @@
             <div class="footer__content">お問い合わせ</div>
             <div class="footer__content">利用規約</div>
             <div class="footer__content">初めての方へ</div>
+            <a href="http://www.goo.ne.jp/"">
+                <img src="http://u.xgoo.jp/img/sgoo.png" alt="supported by goo"
+                title="supported by goo" width="100px">
+            </a>
         </footer>
 
-        <script>
+        <script>     
             const resultArray = JSON.parse(localStorage.getItem('resultArray'));
             const favoriteArray = JSON.parse(localStorage.getItem('favoriteArray'));
-            //なぜかちょくちょく画面が大きくなるバグがある
+            document.querySelectorAll(".recommendText")[0].innerText = makeComment(favoriteArray)
             document.querySelectorAll("h3")[0].innerText = "1位　" + resultArray[0][1];
             document.querySelectorAll("h3")[1].innerText = "2位　" + resultArray[1][1];
             document.querySelectorAll("h3")[2].innerText = "3位　" + resultArray[2][1];document.querySelectorAll("h3")[3].innerText = "最下位　" + resultArray[3][1];
@@ -100,6 +113,15 @@
             const twitterText = "私に最もおすすめな観光地は" + resultArray[0][1] + "、絶対に行ってはいけない都市は" + resultArray[3][1] + "でした。30秒で簡単診断。あなたもやってみよう。"
             document.querySelectorAll(".twitter-share-button")[0].setAttribute("data-text",　twitterText)
 
+
+            for (var i = 1;i < 5; i++) {
+                for (var j = 1;j < 6; j++) {
+                    const keywordjson = returnKeyword(resultArray[i-1][1])
+                    const className = 'goo' + i + j
+                    document.getElementsByClassName(className)[0].innerText = Object.keys(keywordjson["keywords"][j-1])
+                }
+            } 
+            
             const chartArray = ["Chart1","Chart2","Chart3","Chart4"]
             for (var i = 0;i < 4; i++) {
                 var ctx1 = document.getElementsByClassName(chartArray[i]);
@@ -122,6 +144,9 @@
                     },
                 options: {
                         scale: {
+                            pointLabels: {      
+                                fontSize: 16,  
+                            },
                             ticks: {
                                 display: true,
                                 min: 0,

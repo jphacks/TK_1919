@@ -165,7 +165,7 @@ canvas {
     background: dodgerblue;
     color: white;
     font-weight: bold;
-    margin: 10px auto 100px auto;
+    margin: 10px auto 10px auto;
     border-radius: 5px;
 }
 
@@ -266,4 +266,27 @@ footer {
 
 .humanButton:hover {
     background: royalblue;
+}
+
+.goo {
+    color: black;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 50px
+}
+
+li {
+    display: inline;
+    color: dodgerblue;
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: underline;
+}
+
+.recommendText {
+    font-size: 18px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px
 }

@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="video.css">
-    <title>旅行レコメンド</title>
-
-    
+    <title>旅行レコメンド</title>   
 </head>
 <body>
         <div class="topMenu">
@@ -19,7 +17,7 @@
                 <div class="topMenu__register">国内旅行</div>
         </div>
         <div class="maincontentsStart">
-                <h2 class="maincontentsStart__title">視線からあなたの心を読み取り最適な旅行プランを提案します</h2>
+                <h2 class="maincontentsStart__title">視線からあなたの深層心理を読み取り最適な旅行プランを提案します</h2>
                 <div class="maincontentsStart__human">
                     <p class="humanSelect">人数を選んでね</p>
                     <button id="1" class="humanButton">1人</button>
@@ -42,21 +40,11 @@
             
 
             $(function() {
-                var video = document.getElementById('video');
-                var onFailSoHard = function(e) {
-                    console.log('エラー!');
-                };
 
                 var goVideo = function() {
                     localStorage.setItem('human', 1);
                     window.location.href = 'video.html';
-                }
-
-                window.URL = window.URL || window.webkitURL;
-                navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-                navigator.getUserMedia({video: true}, function(stream) {
-                    video.srcObject = stream;
-                }, onFailSoHard);
+                }      
 
                 $('#1').click(function(e) {
                     localStorage.setItem('human', 1);
@@ -75,9 +63,9 @@
                     window.location.href = 'video.html';
                 });
 
-                setTimeout(function() {
-                    goVideo();
-                }, 10000);
+                // setTimeout(function() {
+                //     goVideo();
+                // }, 10000);
 
             })
         
