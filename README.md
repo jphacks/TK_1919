@@ -1,7 +1,6 @@
 # Unagi-Recommendation うなレコ
-
-[![Unagi-recomendation](image.png)](https://www.youtube.com/watch?v=G5rULR53uMk)
-
+![うなぎレコメンデーション](https://github.com/jphacks/TK_1919/blob/master/readme_images/logo.png "Unagi-recomendation")
+![うなぎレコメンデーション](https://github.com/jphacks/TK_1919/blob/master/readme_images/logo.png "Unagi-recomendation")
 ## 製品概要
 ### Travel × Tech
 ### 背景（製品開発のきっかけ、課題等）
