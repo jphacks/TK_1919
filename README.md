@@ -34,8 +34,9 @@
 1. あなたの好みを測るために、２つの写真のペアが１５組現れます。好きな写真の方をみてください
 ![操作方法1](https://github.com/jphacks/TK_1919/blob/master/fig_ReadMe/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202019-10-27%2013.34.29.png "screenImages1")
 2. 写真の選び方から、あなたが今本当に行くべき旅行先を提案します
-![操作方法2](https://github.com/jphacks/TK_1919/blob/master/fig_ReadMe/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202019-10-27%2013.35.59.png "screenImages2")
+![操作方法2](https://github.com/jphacks/TK_1919/blob/master/fig_ReadMe/screenImage.png "screenImages2")
 3. グループで旅行する場合は、グループの満足度を最大化するような旅行先を提案します
+![操作方法3](https://github.com/jphacks/TK_1919/blob/master/fig_ReadMe/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202019-10-27%2013.35.59.png "screenImages3")
 
 ### 特長
 
