@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="video.css">
+    <title>旅行レコメンド</title>   
+</head>
+<body>
+        <div class="topMenu">
+                <div class="topMenu__title">ウナギレコメンデーション</div>
+                <div class="topMenu__register">会員登録</div>
+                <div class="topMenu__register">履歴を見る</div>
+                <div class="topMenu__register">旅行会社一覧</div>
+                <div class="topMenu__register">海外旅行</div>
+                <div class="topMenu__register">国内旅行</div>
+        </div>
+        <div class="maincontentsStart">
+                <h2 class="maincontentsStart__title">視線からあなたの深層心理を読み取り最適な旅行プランを提案します</h2>
+                <div class="maincontentsStart__human">
+                    <p class="humanSelect">人数を選んでね</p>
+                    <button id="1" class="humanButton">1人</button>
+                    <button id="2" class="humanButton">2人</button>
+                    <button id="3" class="humanButton">3人</button>
+                    <button id="4" class="humanButton">4人</button>
+                </div>
+                <canvas id="canvas" style="display:none"></canvas>
+                <video id="video" autoplay></video>
+        </div>
+    
+        <footer>
+                <div class="footer__content">お問い合わせ</div>
+                <div class="footer__content">利用規約</div>
+                <div class="footer__content">初めての方へ</div>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            
+
+            $(function() {
+
+                var goVideo = function() {
+                    localStorage.setItem('human', 1);
+                    window.location.href = 'video.html';
+                }      
+
+                $('#1').click(function(e) {
+                    localStorage.setItem('human', 1);
+                    window.location.href = 'video.html';
+                });
+                $('#2').click(function(e) {
+                    localStorage.setItem('human', 2);
+                    window.location.href = 'video.html';
+                });
+                $('#3').click(function(e) {
+                    localStorage.setItem('human', 3);
+                    window.location.href = 'video.html';
+                });
+                $('#4').click(function(e) {
+                    localStorage.setItem('human', 4);
+                    window.location.href = 'video.html';
+                });
+
+                // setTimeout(function() {
+                //     goVideo();
+                // }, 10000);
+
+            })
+        
+        </script>
+</body>
+</html>
