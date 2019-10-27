@@ -2,7 +2,7 @@
 ![うなぎレコメンデーション](https://github.com/jphacks/TK_1919/blob/master/readme_images/logo.png "Unagi-recomendation")
 # Demo動画&リンク
 [うなぎレコメンデーション](https://trickjp.com/start.html)
-上記のリンクより実際に体験できます。
+左のリンクより実際に体験できます。
 [![デモムービー](youtube_image.png)](https://youtu.be/c4XjRWWVmU8)
 
 ## 目次
