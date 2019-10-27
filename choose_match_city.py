@@ -18,7 +18,7 @@ def sim_distance(user,city):
 def group_satisfaction(user,city):
   group_distify = 0
   cnt = 0
-  distify_member = 0
+  distify_member = []
   for user_name in user:
     cnt += 1
     distify = 0
@@ -26,7 +26,7 @@ def group_satisfaction(user,city):
       distify += (user_name[j] - city[j])**2
       if j == len(user_name)-1:
         if distify >= distify_threshould:
-          distify_member = cnt
+          distify_member.append(cnt)
           #print(cnt, "番目さんは不満を抱いている可能性があります。仲違いするかも？！変更した方がいいかもしれません")
         group_distify += distify
   #print((group_distify,distify_member))
@@ -37,10 +37,10 @@ def choose_best3_worst_city(city_val):
    similarity = []
    for i in range(len(city_val)):
     distify_val,distify_member = group_satisfaction(user,city_val[i][1])
-    similarity.append([group_satisfaction(user,city_val[i][1]),city_val[i][0],city_val[i][1]])
+    similarity.append([distify_val,distify_member,city_val[i][0],city_val[i][1]])
    #print(similarity)
    sort_sim = sorted(similarity)
-   best_3 = sort_sim[:2]
+   best_3 = sort_sim[:3]
    worst = sort_sim[-1]
    best_3.append(worst)
    return(best_3)
