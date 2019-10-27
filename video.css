@@ -1,0 +1,292 @@
+#video {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    right: 1000px;
+}
+
+
+.topMenu {
+    width: 100vw;
+    height: 50px;
+    background-color: dodgerblue;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+    z-index: 10
+}
+
+.topMenu__title {
+    display: inline-block;
+    font-weight: bold;
+    width: 300px;
+    height: 100%;
+    line-height: 50px;
+    padding: 0px 20px;
+}
+
+.topMenu__register {
+    display: inline-block;
+    width: 120px;
+    height: 100%;
+    line-height: 50px;
+    padding: 0px 10px;
+    font-size: 17px;
+}
+
+.topMenu__register:hover {
+    background: royalblue; 
+}
+
+.maincontents {
+    display: block;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.maincontentsResult {
+    display: inline-block;
+    width: 45%;
+    margin-top: 10px;
+    margin-left: 5%;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.maincontentsResult2 {
+    display: inline-block;
+    width: 45%;
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0.05);
+    vertical-align: top;
+    height: 3050px
+}
+
+.maincontents__which {
+    font-size: 30px;
+    color: red;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.maincontents__images {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.leftimage {
+    width: 40%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.rightimage {
+    width: 40%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.maincontents__canvases {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 400px
+}
+
+.city {
+    font-size: 22px;
+    text-align: center;
+}
+
+.citypicture {
+    width: 200px;
+    height: 150px;
+}
+
+.detail {
+    text-align: left;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.start {
+    display: block;
+    position: fixed;
+    width: 70vw;
+    height: 60vh;
+    top: 20vh;
+    left: 15vw;
+    background: white;
+    border-radius: 30px;
+    z-index: 30
+}
+
+.start__second {
+    text-align: center;
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.bg {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0vh;
+    left: 0vw;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 20
+}
+
+.twitter-share-button {
+    font-size: 0px;
+    margin-right: 60px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+canvas {
+    z-index: -1;
+}
+
+.moreButton {
+    display: block;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    margin: 10px auto 10px auto;
+    border-radius: 5px;
+}
+
+.moreButton:hover {
+    background: royalblue;
+}
+
+.MinorButton {
+    display: block;
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    margin: 10px auto 100px auto;
+    border-radius: 5px;
+}
+
+.MinorButton:hover {
+    background: royalblue;
+}
+
+
+.maincontentsResult2__img {
+    max-width: 500px;
+    margin: 40px 10% 20px 10%;
+}
+
+footer {
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+    background: white;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: 2px solid dodgerblue;
+}
+
+.footer__content {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: left;
+    padding: 5px;
+    color: black;
+    width: 150px;
+
+}
+
+.maincontentsStart {
+    display: block;
+    width: 105vw;
+    height: 110vh;
+    background-image: url("Original/東京/4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    right: 2vw;
+}
+
+.maincontentsStart__title {
+    text-align: center;
+    color: white;
+    padding-top: 150px;
+    font-size: 30px;
+}
+
+.maincontentsStart__human {
+    width: 30%;
+    margin: 40px auto;
+    background: white;
+    border-radius: 20px;
+    height: auto;
+    padding: 10px
+}
+
+.humanSelect {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.humanButton {
+    display: block;
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.humanButton:hover {
+    background: royalblue;
+}
+
+.goo {
+    color: black;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 50px
+}
+
+li {
+    display: inline;
+    color: dodgerblue;
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: underline;
+}
+
+.recommendText {
+    font-size: 18px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px
+}
