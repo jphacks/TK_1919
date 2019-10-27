@@ -19,28 +19,75 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
         
         <!-- ③チャート描画情報の作成 -->
-        <script>
-            var ctx = document.getElementById("myChart");
-            var myChart = new Chart(ctx, {
-                type: 'radar', // チャートのタイプ
-                data: { // チャートの内容
-                    labels: ["distance", "urban", "hot", "culture", "oriental"],
-                    datasets: [{
-                        label: "東京",
-                        borderColor: "rgba(200,0,0.2)",
-                        backgroundColor: "rgba(255,0,0,0.2)",
-                        data: [12, 19, 3, 5, 2]
-                    },
-                    {
-                      label: "アムステルダム",
-                      borderColor: "rgba(0,200,0.2)",
-                      backgroundColor: "rgba(0,255,0,0.2)",
-                      data: [20,15,5,15,0]
-                    }]
-              }
-            });
-        </script>
-        
+       <script>
+function レーダーチャート() {
+    var ctx = document.getElementById("レーダーチャート表示場所").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: "radar",    // グラフの種類　レーダーチャート
+        data: {
+            labels:  ["国語", "英語", "数学", "理科", "社会"],  // 軸のラベル
+            datasets: [
+                {
+                    label: "生徒Ａ",
+                    data: [70, 80, 60, 40, 70],
+                    backgroundColor: "rgba(255,0,0,0.2)", // 線の下の塗りつぶしの色
+                    borderColor: "red",                   // 線の色
+                    borderWidth: 2,                       // 線の幅
+                    pointStyle: "circle",                 // 点の形状
+                    pointRadius: 6,                       // 点形状の半径
+                    pointBorderColor: "red",              // 点の境界線の色
+                    pointBorderWidth: 2,                  // 点の境界線の幅
+                    pointBackgroundColor: "yellow"        // 点の塗りつぶし色
+                },
+                {
+                    label: "生徒Ｂ",
+                    data: [45, 45, 35, 85, 45],
+                    fill: false,                          // 塗りつぶしなし backgroundColor不要
+                    borderColor: "blue",
+                    borderWidth: 2,
+                    pointStyle: "rect",
+                    pointRadius: 6,
+                    pointBorderColor: "blue",
+                    pointBorderWidth: 2,
+                    pointBackgroundColor: "green"
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            title: {                 // タイトル
+                display: true,
+                fontSize: 20,
+                text: "レーダーチャート"
+            },
+            legend: {
+                position: 'bottom'   // 凡例の表示位置
+            },
+            scale: {
+                pointLabels: {       // 軸のラベル（"国語"など）
+                    fontSize: 16,         // 文字の大きさ
+                    fontColor: "green"    // 文字の色
+                },
+                ticks: {             // 目盛り
+                    min: 0,              // 最大値
+                    max: 100,            // 最大値
+                    stepSize: 20,        // 目盛の間隔
+                    fontSize: 12,        // 目盛り数字の大きさ
+                    fontColor: "purple"  // 目盛り数字の色
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "purple"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: "lime"
+                }
+            }
+        }
+    });
+}
+</script>1 
         <!-- その他内容（任意） -->
         
     </body>
