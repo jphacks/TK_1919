@@ -30,10 +30,10 @@ def choose_min3_city():
    #print(similarity)
    sort_sim_minor = sorted(similarity_minor)
    best_3_minor = sort_sim_minor[-3:]
-   worst_minor = sort_sim[0]
-   best_3.append(best_3_minor)
+   worst_minor = sort_sim_minor[0]
+   best_3.extend(best_3_minor)
    best_3.append(worst_minor)
-
+   #print(best_3[-1])
    return(best_3)
       
 if __name__ == "__main__":
