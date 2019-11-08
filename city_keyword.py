@@ -10,14 +10,15 @@ def gooAPIkeyword(s_title,s_body,max_num) :
 
     url = "https://labs.goo.ne.jp/api/keyword"
 
-    obj = {"app_id":appID,"request_id":"record001","title":s_title,"body":s_body,"max_num":max_num,"focus":"ORG"}
+    obj = {"app_id":appID,"request_id":"record001","title":s_title,"body":s_body,"max_num":max_num,"focus":"LOC"}
     json_data = json.dumps(obj).encode("utf-8")
 
     proxies = []
     params = {}
     headers = {'Content-Type' : 'application/json'}
     r = requests.post(url, params=params, data=json_data, headers=headers, proxies=proxies, timeout=10)
-    j = r.text
+    #j = r.text
+    j = r
 
     return j
 
@@ -71,7 +72,6 @@ if __name__ == "__main__":
 
     for i in range(len(dataset)) :
         j = gooAPIkeyword(dataset[i][0],dataset[i][1],5)
-        k = j
-        with open(path_w, mode='a') as f:
-            f.write(str(k)+'\n')
+        #with open(path_w, mode='a') as f:
+            #f.write(str(k)+'\n')
         print(k)
