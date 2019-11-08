@@ -1,6 +1,7 @@
 import requests
 import json
 import urllib
+import webbrowser
 
 url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0"
 APIKey = "c92d3c4eecmshb37fe7ee2e6c5eap106f08jsn556a682992c3"
@@ -23,10 +24,11 @@ params={
 
 req = requests.post(url,data = params,headers=headers)
 
-print(req.status_code)
-req.raise_for_status()
+r = req.headers
+r = r['Location']
 
-urllib.request.urlopen(req)
+webbrowser.open(r,1)
+#urllib.request.urlopen(r)
 
 #r = req.headers
 #print(r)
