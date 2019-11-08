@@ -20,7 +20,7 @@ def group_satisfaction(user,city):
     cnt += 1
     distify = 0
     for j in range(len(user_name)):
-      distify += (user_name[j] - city[j])**2 / (abs(user_name[j]-2.5)+1)
+      distify += (user_name[j] - city[j])**2 * abs(user_name[j]-2.5)
       if j == len(user_name)-1:
         if distify >= distify_threshould:
           distify_member.append(cnt)
